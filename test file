@@ -1,0 +1,578 @@
+installed.packages("foreign")
+library (foreign)
+search ()
+
+
+
+# Create the data frame.
+emp.data <- data.frame(
+  emp_id = c (1:5), 
+  emp_name = c("Rick","Dan","Michelle","Ryan","Gary"),
+  salary = c(623.3,515.2,611.0,729.0,843.25), 
+  
+  start_date = as.Date(c("2012-01-01", "2013-09-23", "2014-11-15", "2014-05-11",
+                         "2015-03-27")),
+  stringsAsFactors = FALSE
+)
+
+# Print the data frame.			
+print(emp.data)
+
+# Get the structure of the data frame.
+str(emp.data)
+
+
+# Print the summary.
+print(summary(emp.data)) 
+
+
+category <- 'A'
+price <- 20
+if (category =='A'){
+  cat('A vat rate of 6% is applied.','The total price is',price *1.08) 
+} else if (category =='B'){
+  cat('A vat rate of 9% is applied.','The total price is',price *1.10) 
+} else {
+  cat('A vat rate of 12% is applied.','The total price is',price *1.20) 
+}
+
+
+
+# Create the data frame.
+emp.data <- data.frame(
+  emp_id = c (1:5),
+  emp_name = c("Rick","Dan","Michelle","Ryan","Gary"),
+  salary = c(623.3,515.2,611.0,729.0,843.25),
+  
+  start_date = as.Date(c("2012-01-01","2013-09-23","2014-11-15","2014-05-11",
+                         "2015-03-27")),
+  stringsAsFactors = FALSE
+)
+
+# Extract Specific columns.
+result <- data.frame(emp.data$emp_name,emp.data$salary)
+print(result)
+
+
+
+# Create the data frame.
+emp.data <- data.frame(
+  emp_id = c (1:5),
+  emp_name = c("Rick","Dan","Michelle","Ryan","Gary"),
+  salary = c(623.3,515.2,611.0,729.0,843.25),
+  
+  start_date = as.Date(c("2012-01-01", "2013-09-23", "2014-11-15", "2014-05-11",
+                         "2015-03-27")),
+  stringsAsFactors = FALSE
+)
+# Extract first two rows.
+result <- emp.data[1:2,]
+print(result)
+
+
+# ADD coluumn :Create the data frame.
+emp.data <- data.frame(
+  emp_id = c (1:5), 
+  emp_name = c("Rick","Dan","Michelle","Ryan","Gary"),
+  salary = c(623.3,515.2,611.0,729.0,843.25), 
+  
+  start_date = as.Date(c("2012-01-01", "2013-09-23", "2014-11-15", "2014-05-11",
+                         "2015-03-27")),
+  stringsAsFactors = FALSE
+)
+
+# Add the "dept" coulmn.
+emp.data$dept <- c("IT","Operations","IT","HR","Finance")
+v <- emp.data
+print(v)
+
+# ADD row : Create the first data frame.
+emp.data <- data.frame(
+  emp_id = c (1:5), 
+  emp_name = c("Rick","Dan","Michelle","Ryan","Gary"),
+  salary = c(623.3,515.2,611.0,729.0,843.25), 
+  
+  start_date = as.Date(c("2012-01-01", "2013-09-23", "2014-11-15", "2014-05-11",
+                         "2015-03-27")),
+  dept = c("IT","Operations","IT","HR","Finance"),
+  stringsAsFactors = FALSE
+)
+
+# Create the second data frame
+emp.newdata <- 	data.frame(
+  emp_id = c (6:8), 
+  emp_name = c("Rasmi","Pranab","Tusar"),
+  salary = c(578.0,722.5,632.8), 
+  start_date = as.Date(c("2013-05-21","2013-07-30","2014-06-17")),
+  dept = c("IT","Operations","Fianance"),
+  stringsAsFactors = FALSE
+)
+
+# Bind the two data frames.
+emp.finaldata <- rbind(emp.data,emp.newdata)
+print(emp.finaldata)
+
+
+# Joint column and row
+# Create vector objects.
+city <- c("Tampa","Seattle","Hartford","Denver")
+state <- c("FL","WA","CT","CO")
+zipcode <- c(33602,98104,06161,80294)
+
+# Combine above three vectors into one data frame.
+addresses <- cbind(city,state,zipcode)
+
+# Print a header.
+cat("# # # # The First data frame\n") 
+
+# Print the data frame.
+print(addresses)
+
+# Create another data frame with similar columns.
+new.address <- data.frame(
+  city = c("Lowry","Charlotte"),
+  state = c("CO","FL"),
+  zipcode = c("80230","33949"),
+  stringsAsFactors = FALSE
+)
+
+# Print a header.
+cat("# # # The Second data frame\n") 
+
+# Print the data frame.
+print(new.address)
+
+# Combine rows form both the data frames.
+all.addresses <- rbind(addresses,new.address)
+
+# Print a header.
+cat("# # # The combined data frame\n") 
+
+# Print the result.
+print(all.addresses)
+
+
+
+
+
+# 데이터 형태 확인 Create the data frame.
+emp.data <- data.frame(
+  emp_id = c (1:5), 
+  emp_name = c("Rick","Dan","Michelle","Ryan","Gary"),
+  salary = c(623.3,515.2,611.0,729.0,843.25), 
+  
+  start_date = as.Date(c("2012-01-01", "2013-09-23", "2014-11-15", "2014-05-11",
+                         "2015-03-27")),
+  stringsAsFactors = FALSE
+)
+print(emp.data)
+
+is.numeric (emp.data$emp_name)
+is.character (emp.data$emp_id) #As로 변경
+
+
+#작업디렉토리 자료 불러오기
+getwd()
+setwd("C:/Users/sungr/OneDrive/문서")
+
+#read.csv : 텍스트 파일 읽기
+mtcars <- read.csv("mtcars_K.csv", header = T)
+#read.csv ("http://~")
+write.csv (mtcars, "mtcars2.csv")
+
+#read_excel : 엑셀 파일 읽기
+install.packages("readxl")
+library(readxl)
+read_excel ("")
+
+#read.spss : spss 파일 읽기
+install.packages("foriegn")
+library (foriegn)
+read.spss ("")
+
+#입력자료 및 변수명 확인
+str(mtcars1)
+View(mtcars1)
+nrow(mtcars1)
+head(mtcars1, 10)
+tail(mtcars1, 10)
+summary(mtcars1)
+
+library(ggplot2)
+data("iris")
+head(iris)
+
+ggplot(data=iris)+
+  geom_point(mapping=aes(x=Petal.Length,y=Petal.Width))
+
+ggplot(data=iris,mapping=aes(x=Petal.Length,y=Petal.Width))+
+  geom_point()+
+  geom_smooth(method="lm")
+
+ggplot(data=iris,mapping=aes(x=Petal.Length,y=Petal.Width,color=Species))+
+  geom_point()+
+  geom_smooth(method="lm")
+
+
+
+
+Introduction
+Files
+
+
+
+#Working Directory
+getwd()
+setwd("C:/Users/sungr/OneDrive/문서")
+
+
+
+#Reading in your data
+CSV
+cars <- read.csv("mtcars_K.csv", header = T)
+
+#Other methods of reading in files (Excel)
+#install package
+install.packages("readxl") #you must put the package name in quotes
+#load package
+library(readxl) #don't put quotes here
+df <- read_excel("File_name.xlsx")
+df <- read_excel("File_name.xlsx", sheet="sheet_name")
+
+#Analyzing your data
+#Always look at your data first!
+  #Glance over
+View(cars) #opens up your datafile (data) within RStudio
+head(cars) #gives you a peak of the first 10 rows of your dataset
+str(cars$mpg)
+#cars$mpg <- as.numeric(cars$mpg)
+colnames(cars)
+
+summary(cars)
+hist(cars$mpg, nclass = 40)
+
+summary(cars$cyl)
+hist(cars$cyl, nclass = 20)
+
+summary(cars$vs)
+hist(cars$vs, nclass = 20)
+
+
+Hypothesis Testing
+Confidence Intervals
+
+""
+Side effects were prevalent in both v-shape engine and straight engine group. 
+Of those in the regualr maintanance group (n=15762), 84.2% of the cars reported a good shape event. 
+Compute the 95% confidence interval on this estimate.
+
+n <- 15762 #number of observations
+p <- 0.842 #proportion (%) given
+
+margin <- qnorm(0.975)*sqrt(p*(1-p)/n)
+margin
+
+upper <- 0.842 + 1.96 * (sqrt(0.842 * (1-0.842)/15762))
+upper
+## [1] 0.8476942
+
+
+lower <- 0.842 - 1.96 * (sqrt(0.842 * (1-0.842)/15762))
+lower
+## [1] 0.8363058
+
+Normal Distribution
+dp1 <- c(11, 10, 6, 3, 11, 10, 9, 11) #driving period of v-shape engine
+summary(dp1)
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   3.000   8.250  10.000   8.875  11.000  11.000
+sd(dp1)
+## [1] 2.900123
+CI_pos <- (mean(dp1)) + (1.96 * ((sd(dp1) / (sqrt(length(dp1))))))
+CI_pos #Upper level of CI
+CI_neg <- (mean(dp1))-(1.96*((sd(dp1)/(sqrt(length(dp1))))))
+CI_neg #Lower level of CI
+
+
+## One Sample T Test
+
+summary(cars)
+We hypothesize that the average mpg of a sample is 25 or lerger
+
+H0: the average gestatopm age is < 25
+HA: the average gestation age is ≥ 25
+
+# by hand
+m.mpg = mean(cars$mpg)
+sd.mpg = sd(cars$mpg)
+n.mpg = length(cars$mpg)
+
+t.obs = (m.mpg - 40)/(sd.mpg/sqrt(n.mpg))
+pt(t.obs, df=n.mpg-1, lower.tail = T)
+
+# using the function
+t.test(cars$mpg, mu = 25, alternative = "less") #You are telling R your alternative hypothesis is less than mu
+
+
+## Two Sample T Test
+#Example 1
+#We hypothesize that average gestation will be different between babies of mothers that smoked cigarettes and babies of mothers that did not smoke cigarettes.
+
+H0: difference in mpg by engine shape (V, straight)  => No
+HA: difference in mpg by engine shape (V, straight)  => Yes
+
+# before we run the analysis, let's look at our data
+boxplot(cars$mpg~cars$vs)
+
+# to test our hypothesis, we will perform a two-sample t-test
+t.test(cars$mpg~cars$vs)
+t.test(cars$mpg, cars$vs, paired = TRUE, alternative = "two.sided")#“greater” or “less”.
+
+# ANOVA
+install.packages(c("ggplot2", "ggpubr", "tidyverse", "broom", "AICcmodavg"))
+#do everytime when you start
+library(ggplot2)
+library(ggpubr)
+library(tidyverse)
+library(broom)
+library(AICcmodavg)
+
+crop.data <- read.csv("path/to/your/file/crop.data.csv", header = TRUE, colClasses = c("factor", "factor", "factor", "numeric"))
+
+summary(crop.data)
+
+
+
+summary(cars)
+hist(cars$mpg, nclass = 40)
+
+summary(cars$cyl)
+hist(cars$cyl, nclass = 20)
+
+one.way <- aov(cars$mpg ~ cars$cyl, data = cars)
+
+summary(one.way)
+
+
+two.way <- aov(cars$mpg ~ cars$cyl + cars$vs, data = cars)
+
+summary(two.way)
+
+#interaction
+interaction <- aov(cars$mpg ~ cars$cyl* cars$vs, data = cars)
+
+summary(interaction)
+
+
+
+#confounding
+blocking <- aov(cars$mpg ~ cars$cyl + cars$vs + cars$am, data = crop.data)
+summary(blocking)
+
+
+
+#bestfit - AIC
+library(AICcmodavg)
+
+model.set <- list(one.way, two.way, interaction, blocking)
+model.names <- c("one.way", "two.way", "interaction", "blocking")
+
+aictab(model.set, modnames = model.names)
+
+
+
+#Check for homoscedasticityCheck for homoscedasticity
+par(mfrow=c(2,2))
+plot(two.way)
+par(mfrow=c(1,1))
+# If your model doesn’t fit the assumption of homoscedasticity, you can try the Kruskall-Wallis test instead.
+
+# 그룹간 비교 어느 그룹이 다른지....
+#Post-hoc
+tukey.two.way<-TukeyHSD(two.way)
+
+tukey.two.way
+
+#Find the groupwise differences
+tukey.plot.aov<-aov(yield ~ fertilizer:density, data=crop.data)
+tukey.plot.test<-TukeyHSD(tukey.plot.aov)
+plot(tukey.plot.test, las = 1)
+
+
+# groupingg data
+mean.yield.data <- crop.data %>%
+  group_by(fertilizer, density) %>%
+  summarise(
+    yield = mean(yield)
+  )
+
+mean.yield.data$group <- c("a","b","b","b","b","c")
+
+mean.yield.data
+
+#그룹별 산포도
+two.way.plot <- ggplot(crop.data, aes(x = density, y = yield, group=fertilizer)) +
+  geom_point(cex = 1.5, pch = 1.0,position = position_jitter(w = 0.1, h = 0))
+
+two.way.plot
+
+
+# 분리한 산포도
+two.way.plot <- two.way.plot +
+  geom_text(data=mean.yield.data, label=mean.yield.data$group, vjust = -8, size = 5) +
+  facet_wrap(~ fertilizer)
+
+two.way.plot
+
+
+
+
+#Makde the graph ready for publication
+
+two.way.plot <- two.way.plot +
+  theme_classic2() +
+  labs(title = "Crop yield in response to fertilizer mix and planting density",
+       x = "Planting density (1=low density, 2=high density)",
+       y = "Yield (bushels per acre)")
+
+two.way.plot
+
+#---------------------------------------------------
+
+
+
+
+
+## Correlation
+summary(cars)
+We hypothesize that average birthweight will be associated with birth length
+
+H0: correlation between mpg and hp = 0
+HA: correlation between mpg and hp != 0 
+
+
+plot(cars$mpg, cars$hp, xlab="mpg",ylab="hp")
+# test the correlation
+cor.test(cars$mpg, cars$hp)
+
+
+## text mining & world cloud
+# Install
+install.packages("tm")  # for text mining
+install.packages("SnowballC") # for text stemming
+install.packages("wordcloud") # word-cloud generator 
+install.packages("RColorBrewer") # color palettes
+# Load
+library("tm")
+library("SnowballC")
+library("wordcloud")
+library("RColorBrewer")
+
+# Read text for wordcloud
+text2 <- readLines(file.choose("C:/Users/sungr/Dropbox/Martin.txt")
+# Read the text file from internet
+filePath <- "http://www.sthda.com/sthda/RDoc/example-files/martin-luther-king-i-have-a-dream-speech.txt"
+text <- readLines(filePath)
+
+# Load the data as a corpus
+docs <- Corpus(VectorSource(text))
+
+# Inspect text
+inspect(docs)
+
+# Text transformation
+toSpace <- content_transformer(function (x , pattern ) gsub(pattern, " ", x))
+docs <- tm_map(docs, toSpace, "/")
+docs <- tm_map(docs, toSpace, "@")
+docs <- tm_map(docs, toSpace, "\\|")
+
+# Convert the text to lower case
+docs <- tm_map(docs, content_transformer(tolower))
+# Remove numbers
+docs <- tm_map(docs, removeNumbers)
+# Remove english common stopwords
+docs <- tm_map(docs, removeWords, stopwords("english"))
+# Remove your own stop word
+# specify your stopwords as a character vector
+docs <- tm_map(docs, removeWords, c("blabla1", "blabla2")) 
+# Remove punctuations
+docs <- tm_map(docs, removePunctuation)
+# Eliminate extra white spaces
+docs <- tm_map(docs, stripWhitespace)
+# Text stemming
+# docs <- tm_map(docs, stemDocument)
+
+
+# Build a term-document matrix
+dtm <- TermDocumentMatrix(docs)
+m <- as.matrix(dtm)
+v <- sort(rowSums(m),decreasing=TRUE)
+d <- data.frame(word = names(v),freq=v)
+head(d, 10)
+
+set.seed(1234)
+wordcloud(words = d$word, freq = d$freq, min.freq = 1,
+          max.words=200, random.order=FALSE, rot.per=0.35, 
+          colors=brewer.pal(8, "Dark2"))
+
+
+
+#words : the words to be plotted
+#freq : their frequencies
+#min.freq : words with frequency below min.freq will not be plotted
+#max.words : maximum number of words to be plotted
+#random.order : plot words in random order. If false, they will be plotted in decreasing frequency
+#rot.per : proportion words with 90 degree rotation (vertical text)
+#colors : color words from least to most frequent. Use, for example, colors =“black” for single color.
+
+
+
+# Import the data
+file_path <- "http://www.sthda.com/sthda/RDoc/data/housetasks.txt"
+housetasks <- read.delim(file_path, row.names = 1)
+head(housetasks)
+
+
+install.packages ("gplots")
+library("gplots")
+# 1. convert the data as a table
+dt <- as.table(as.matrix(housetasks))
+# 2. Graph
+balloonplot(t(dt), main ="housetasks", xlab ="", ylab="",
+            label = FALSE, show.margins = FALSE)
+
+
+chisq <- chisq.test(housetasks)
+chisq
+
+# Observed counts
+chisq$observed
+
+# Expected counts
+round(chisq$expected,2)
+
+
+## Linear Regression
+#Univariate
+We hypothesize that average birth length will predict birthweight
+
+H0: beta_length = 0
+HA: beta_length != 0
+
+# perform simple (univariate) linear regression
+fit.mpg.hp = lm(mpg~hp, data=cars)
+summary(fit.mpg.hp)
+
+
+#Multivariable
+We hypothesize that average birth length and maternal smoking will predict birthweight
+
+H0: beta_length = 0
+HA: beta_length != 0
+
+H0: beta_smoking = 0
+HA: beta_smoking != 0
+
+# perform multiple linear regression
+fit.mpg.hp.vs = lm(mpg~hp + vs, data=cars)
+summary(fit.mpg.hp.vs)
